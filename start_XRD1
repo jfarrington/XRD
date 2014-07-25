@@ -1,0 +1,55 @@
+#
+# start_xrd
+# Oct 03 2013
+# Launch MEDM and set initial values for Xray 
+# Use ./start_xrd -e to enter edit mode
+# Use with no options to execute immediately
+#
+if [ ! -z $1 ]; then
+   if [ $1 = "-e" ]; then
+      medm MEDM_GUI/sydordet.adl &
+   else
+      printf "Unknown option\n"
+      exit 1
+   fi   
+else
+   medm -x MEDM_GUI/sydordet.adl &
+fi
+
+caput det1.EBLK 0
+./test_on
+caput det1.GLDACEN 1
+caput det1.VL0 0.48
+caput det1.VL1 0.48
+caput det1.VL2 0.48
+caput det1.VH1 2.1
+caput det1.VH2 2.1
+
+#Set the TEC current.
+#ao3 is Detector TEC. ao5 is ASIC TEC.
+caput det1:ao3 2.3
+caput det1:ao5 2.1
+
+#Set shaping time to 0.5us
+caput det1.SHPT 0.5us
+
+#Set low gain.
+caput det1.GAIN L
+
+#Use internal dead-time calibration
+caput det1.CalibIO Internal
+
+#Set the Bias to 40v
+caput det1:ao4 40
+
+caput det1.TP1 .05
+
+sleep 1
+
+# Send the DAC calibrations
+#bash XRD_1_CAL-140708-1454.sh
+#bash XRD1-Pix_Config-140721-1007.sh
+
+# Send the ASIC Trim calibrations
+# bash XRD_LOAD_TRIMS.sh
+

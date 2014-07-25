@@ -1,0 +1,17 @@
+#./newdet
+medm  MEDM_GUI/sydordet.adl &
+caput det1.EBLK 1
+./test_on
+#sh adc_stop.sh
+caput det1.GLDACEN 1
+caput det1.VL0 0.31
+caput det1.VL1 0.31
+caput det1.VL2 0.31
+caput det1.VH1 3
+caput det1.VH2 3
+#J.Farrington 7/30/13 Set TEC to 2.1
+caput det1:ao3 2.1
+caput det1:ao5 2.1
+
+#J.Farrington 7/30/13 Set shapping time to 0.5us
+caput det1.SHPT 3

@@ -1,0 +1,44 @@
+#Start medm GUI
+medm  MEDM_GUI/sydordet.adl &
+
+#Set TECs 
+caput det1:ao3 2.2
+caput det1:ao5 1.7
+
+#Enable DACS
+./test_on
+caput det1.EBLK 0 
+caput det1.GLDACEN 1
+
+#Set default shaping time
+caput det1.SHPT 0.5us
+
+#Set default gain
+caput det1.GAIN L
+
+#Set small non-zero wait between autocounts
+caput det1.TP1 .01
+
+#Set default thresholds
+caput det1.VL0 0.55
+caput det1.VL1 0.55
+caput det1.VL2 0.55
+caput det1.VH1 2.25
+caput det1.VH2 2.25
+
+#Set bias
+caput det1:ao4 170
+
+#Set calibration source
+caput det1.CalibIO External
+
+sleep 1
+
+#Load XRD configuration
+#bash Calibration/XRD_CONFIGURATION/XRD2-Pix_Config-130926-1218.sh
+#bash Calibration/XRD_CONFIGURATION/XRD2-DAC_Config-130918-1651.sh
+#bash Calibration/XRD_CONFIGURATION/XRD2-TrimDAC_Config-130926-1740.sh
+
+
+
+

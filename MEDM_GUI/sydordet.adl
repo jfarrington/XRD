@@ -1,0 +1,881 @@
+
+file {
+	name="/opt/epics_dev/Det_medm/sydordet.adl"
+	version=030107
+}
+display {
+	object {
+		x=90
+		y=76
+		width=855
+		height=620
+	}
+	clr=14
+	bclr=2
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=1
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+"cartesian plot" {
+	object {
+		x=13
+		y=150
+		width=825
+		height=370
+	}
+	plotcom {
+		clr=14
+		bclr=1
+	}
+	count="384"
+	trace[0] {
+		ydata="det1.S1"
+		data_clr=14
+		yaxis=0
+	}
+	trace[1] {
+		ydata="det1.S2"
+		data_clr=17
+		yaxis=1
+	}
+	trace[2] {
+		ydata="det1.S3"
+		data_clr=22
+		yaxis=1
+	}
+	x_axis {
+		rangeStyle="auto-scale"
+	}
+	y1_axis {
+		rangeStyle="auto-scale"
+	}
+	y2_axis {
+		rangeStyle="auto-scale"
+	}
+	countPvName="384"
+}
+"text entry" {
+	object {
+		x=510
+		y=55
+		width=80
+		height=24
+	}
+	control {
+		chan="det1.AOEN"
+		clr=14
+		bclr=55
+	}
+	limits {
+		precSrc="default"
+	}
+}
+text {
+	object {
+		x=423
+		y=57
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Anal. Out"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=510
+		y=85
+		width=80
+		height=24
+	}
+	control {
+		chan="det1.LOEN"
+		clr=14
+		bclr=55
+	}
+	limits {
+		precSrc="default"
+	}
+}
+text {
+	object {
+		x=423
+		y=87
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Leak. Out"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=459
+		y=546
+		width=80
+		height=24
+	}
+	control {
+		chan="det1.TP"
+		clr=14
+		bclr=2
+	}
+	limits {
+		precSrc="default"
+	}
+}
+text {
+	object {
+		x=369
+		y=548
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Count Time"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=459
+		y=574
+		width=80
+		height=24
+	}
+	control {
+		chan="det1.TP1"
+		clr=14
+		bclr=2
+	}
+	limits {
+		precSrc="default"
+	}
+}
+text {
+	object {
+		x=369
+		y=576
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Auto Time"
+	align="horiz. right"
+}
+"choice button" {
+	object {
+		x=679
+		y=537
+		width=158
+		height=63
+	}
+	control {
+		chan="det1.CONT"
+		clr=14
+		bclr=5
+	}
+}
+"message button" {
+	object {
+		x=554
+		y=540
+		width=105
+		height=63
+	}
+	control {
+		chan="det1.CNT"
+		clr=14
+		bclr=5
+	}
+	label="CNT"
+	press_msg="1"
+	clrmod="discrete"
+}
+menu {
+	object {
+		x=734
+		y=51
+		width=100
+		height=30
+	}
+	control {
+		chan="det1.SHPT"
+		clr=14
+		bclr=5
+	}
+}
+text {
+	object {
+		x=648
+		y=59
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Shaping time"
+	align="horiz. right"
+}
+menu {
+	object {
+		x=734
+		y=18
+		width=100
+		height=30
+	}
+	control {
+		chan="det1.GAIN"
+		clr=14
+		bclr=5
+	}
+}
+text {
+	object {
+		x=648
+		y=25
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Gain"
+	align="horiz. right"
+}
+"related display" {
+	object {
+		x=174
+		y=540
+		width=150
+		height=65
+	}
+	display[0] {
+		label="Trims"
+		name="trims.adl"
+	}
+	display[1] {
+		label="DAC_Params"
+		name="params.adl"
+	}
+	display[2] {
+		label="DAC_out"
+		name="DAC_out.adl"
+	}
+	clr=14
+	bclr=5
+	visual="a column of buttons"
+}
+rectangle {
+	object {
+		x=548
+		y=534
+		width=118
+		height=75
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		clr="discrete"
+		vis="if not zero"
+		calc="A"
+		chan="det1.CNT"
+	}
+}
+"shell command" {
+	object {
+		x=338
+		y=551
+		width=40
+		height=40
+	}
+	command[0] {
+		label="Enable test pulse"
+		name="./test_on"
+	}
+	command[1] {
+		label="Disable test pulse"
+		name="./test_off"
+	}
+	clr=14
+	bclr=5
+}
+text {
+	object {
+		x=5
+		y=27
+		width=96
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="RTD_COLD"
+	align="horiz. right"
+}
+text {
+	object {
+		x=5
+		y=57
+		width=96
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="RTD_ASIC"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=315
+		y=55
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ai1"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+text {
+	object {
+		x=224
+		y=57
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Bias V"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=315
+		y=85
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ao3"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=315
+		y=115
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ao5"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+text {
+	object {
+		x=5
+		y=87
+		width=96
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="RTD_HOT"
+	align="horiz. right"
+}
+text {
+	object {
+		x=423
+		y=117
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="OLKo"
+	align="horiz. right"
+}
+text {
+	object {
+		x=5
+		y=117
+		width=96
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Ctrl Temp"
+	align="horiz. right"
+}
+text {
+	object {
+		x=224
+		y=27
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Bias I"
+	align="horiz. right"
+}
+text {
+	object {
+		x=423
+		y=27
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="VAC_MON"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=510
+		y=25
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ai7"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+menu {
+	object {
+		x=734
+		y=84
+		width=100
+		height=30
+	}
+	control {
+		chan="det1.GATE"
+		clr=14
+		bclr=5
+	}
+}
+text {
+	object {
+		x=648
+		y=92
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Gate Signal"
+	align="horiz. right"
+}
+text {
+	object {
+		x=200
+		y=27
+		width=26
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="C"
+}
+text {
+	object {
+		x=200
+		y=57
+		width=26
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="C"
+}
+text {
+	object {
+		x=200
+		y=87
+		width=26
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="C"
+}
+text {
+	object {
+		x=405
+		y=27
+		width=26
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="uA"
+}
+text {
+	object {
+		x=200
+		y=117
+		width=26
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="C"
+}
+text {
+	object {
+		x=597
+		y=117
+		width=33
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="V"
+}
+text {
+	object {
+		x=461
+		y=401
+		width=49
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="C"
+}
+text {
+	object {
+		x=405
+		y=87
+		width=26
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+}
+text {
+	object {
+		x=405
+		y=57
+		width=26
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="V"
+}
+"text update" {
+	object {
+		x=110
+		y=25
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ai2"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=110
+		y=55
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ai4"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=110
+		y=85
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ai3"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=510
+		y=115
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ai0"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=110
+		y=115
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ai5"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=315
+		y=25
+		width=80
+		height=24
+	}
+	monitor {
+		chan="det1:ai6"
+		clr=14
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+text {
+	object {
+		x=224
+		y=87
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Sensor TEC"
+	align="horiz. right"
+}
+text {
+	object {
+		x=224
+		y=117
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="ASIC TEC"
+	align="horiz. right"
+}
+text {
+	object {
+		x=405
+		y=117
+		width=26
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+}
+"related display" {
+	object {
+		x=18
+		y=540
+		width=150
+		height=65
+	}
+	display[0] {
+		label="Thresholds"
+		name="thresholds.adl"
+	}
+	display[1] {
+		label="Peltier & Bias"
+		name="Peltier_Bias.adl"
+	}
+	display[2] {
+		label="Calibration"
+		name="sydor_dtcal.adl"
+	}
+	clr=14
+	bclr=5
+	visual="a column of buttons"
+}
+"text update" {
+	object {
+		x=738
+		y=122
+		width=80
+		height=18
+	}
+	monitor {
+		chan="det1.VERS"
+		clr=14
+		bclr=2
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=648
+		y=119
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Version"
+	align="horiz. right"
+}

@@ -1,0 +1,4 @@
+gcc -c main.c
+#gcc -o trim main.o libfit.so /usr/local/grace-5.1.17/lib/libgrace_np.a
+#gcc -L/opt/epics/extensions/lib/linux-x86 -o trim main.o libfit.so /usr/local/grace/lib/libgrace_np.a
+gcc -o trim main.o libfit.so /usr/local/grace/lib/libgrace_np.a
