@@ -1,10 +1,12 @@
-#
+#! /bin/sh
 # start_xrd
 # Oct 03 2013
 # Launch MEDM and set initial values for Xray 
 # Use ./start_xrd -e to enter edit mode
 # Use with no options to execute immediately
 #
+source set_XRD1_IPADDR
+
 if [ ! -z $1 ]; then
    if [ $1 = "-e" ]; then
       medm MEDM_GUI/sydordet.adl &
@@ -47,9 +49,9 @@ caput det1.TP1 .05
 sleep 1
 
 # Send the DAC calibrations
-#bash XRD_1_CAL-140708-1454.sh
-#bash XRD1-Pix_Config-140721-1007.sh
+CAL_DIR=Calibration/XRD_CONFIGURATION
 
-# Send the ASIC Trim calibrations
-# bash XRD_LOAD_TRIMS.sh
-
+bash $CAL_DIR/XRD1-DAC_Config-140708-1454.sh
+bash $CAL_DIR/XRD1-Pix_Config-140721-1818.sh
+# Send the ASIC Trim alibrations
+bash $CAL_DIR/XRD1-TrimDAC_Config-140723-1447.sh
