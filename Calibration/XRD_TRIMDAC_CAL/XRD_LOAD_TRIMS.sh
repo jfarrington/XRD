@@ -22,7 +22,7 @@ fi
 
 
 #
-FILE="/opt/epics_dev/IOC/STRIP_DET/SYDOR_XRD_uC5282/SydorXRD_Start/Calibration/XRD_TRIMDAC_CAL/C"
+FILE="/opt/epics_dev/SydorXRD_Start/Calibration/XRD_TRIMDAC_CAL/C"
 #printf "Opening $FILE:\n"
 
 printf "Enter XRD number: "
@@ -38,7 +38,7 @@ declare -a TR4
 
 while read -a p; do 
 
-   #echo length of p is ${#p[@]}
+   echo length of p is ${#p[@]}
    TR1[$aline]=${p[1]}
    TR2[$aline]=${p[2]}
    TR3[$aline]=${p[3]}
