@@ -55,11 +55,11 @@ CAL_DIR=Calibration/XRD_CONFIGURATION
 # Send the DAC calibrations
 bash $CAL_DIR/XRD1-DAC_Config-140708-1454.sh
 
-# Send the ASIC Trim alibrations
-bash $CAL_DIR/XRD1-TrimDAC_Config-140729-1522.sh
+# Send the ASIC Trim calibrations
+##bash $CAL_DIR/XRD1-TrimDAC_Config-140729-1522.sh
 ##bash $CAL_DIR/XRD1-TrimDAC_Config-140723-1447.sh
 
 # Send the Pixel calibrations
-## bash $CAL_DIR/XRD1-Pix_Config-140729-1522.sh
+bash $CAL_DIR/XRD1-Pix_Config-140729-1522.sh
 ## bash $CAL_DIR/XRD1-Pix_Config-140721-1818.sh
 
