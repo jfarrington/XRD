@@ -26,7 +26,6 @@ fi
 if [ "$mode" = "E" ] || [ $mode = "I" ]; then
 	printf "Load configuration? (y/n):"
 	read conf
-	printf "\n"
 else 
 	conf="y"
 fi
@@ -62,7 +61,7 @@ if [ "$conf" = "y" ]; then
 
 	caput det1.TP1 .05
 
-	printf "**Configuration loaded\n\nv                        "	
+	printf "**Configuration loaded\n\n"      
 	sleep 1
 
 else
@@ -72,7 +71,6 @@ fi
 if [ "$mode" = "E" ] || [ $mode = "I" ]; then
 	printf "Load calibrations? (y/n):"
 	read cal
-	printf "\n"
 else 
 	cal="y"
 fi
@@ -99,7 +97,6 @@ fi
 if [ "$mode" = "E" ] || [ $mode = "I" ]; then
 	printf "Start GUI? (y/n):"
 	read gui
-	printf "\n"
 else 
 	gui="y"
 
@@ -114,3 +111,5 @@ if [ "$gui" = "y" ];then
 		medm -x MEDM_GUI/sydordet.adl &			
 	fi		
 fi
+printf "**Startup complete\n"
+
