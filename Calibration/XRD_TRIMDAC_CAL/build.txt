@@ -1,4 +1,5 @@
-gcc -c main.c
+gcc -c main.c 
+#gcc -c testfit.c -I/opt/epics/base-3.14.12.3/src/libCom/tsDefs -I/opt/epics/base-3.14.12.3/src/libCom/osi -I/opt/epics/base-3.14.12.3/src/libCom/misc -I/opt/epics/base-3.14.12.3/include/os/RTEMS -I/opt/epics/base-3.14.12.3/src/ca -I/opt/epics/extensions/src/ezca -I/opt/epics/base-3.14.12.3/include
 #gcc -o trim main.o libfit.so /usr/local/grace-5.1.17/lib/libgrace_np.a
-#gcc -L/opt/epics/extensions/lib/linux-x86 -o trim main.o libfit.so /usr/local/grace/lib/libgrace_np.a
+gcc -L/opt/epics/extensions/lib/linux-x86 -o trim main.o libfit.so /usr/local/grace/lib/libgrace_np.a
 gcc -o trim main.o libfit.so /usr/local/grace/lib/libgrace_np.a
