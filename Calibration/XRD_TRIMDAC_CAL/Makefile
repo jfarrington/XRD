@@ -26,7 +26,9 @@ CCOPTION = -shared
 libfit.so: testfit.o
 	$(CC) $(CCOPTION) -o libfit.so testfit.o $(LIBDIRS) $(LIBS)
 clean:
-	rm -f *.o libfit.so
+#JF Remove trim execulable as well
+	rm -f *.o libfit.so trim
+
 .c.o: $*.c
 	$(CC) $(CFLAGS) $(INCLUDEDIRS) $*.c
 
