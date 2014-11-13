@@ -1,5 +1,7 @@
-Build Trims 8/22/13
-J.farrington
+=================================================================================
+                                TRIM CODE BUILD PROCEDURE 
+=================================================================================
+J.farrington 8/22/13
 
 **Verify that all commands shown reflect your environment
 
@@ -39,4 +41,28 @@ Build Trims:
 -Run Trims
 $./trims
 ..Done!
+===============================================================================
+                                DAC TRIM PROCEDURE
+===============================================================================
+J.Farrington 8/15/14
+
+1) Run the trims executable								
+2) Enter the following values: 					Typical values
+--$guess: Guess the centroid of the DAC thresholds 		[1.35 ] V
+--$time:  Time between point acquisition. 			[4] s
+--$nstep: Number of steps in scan (centroid will be 
+    approximately on the middle) 	                        [64]
+--$scan: Execute Scan
+--$Fit: fit data to find centroid
+3) Select the bounds of the calibration fit to exclude outliers:
+--Cen (x):
+---$lowcen: low value
+---$upcen:   high value
+--Res (y):
+---$lowres:low value
+---$upres:  high value
+4) Calibrate
+-$disout: use pixels within the bounds defined in the last step.
+5) Send calibration and save
+--$correct: Send correction to the dac trims and save to dacs.dat
 
