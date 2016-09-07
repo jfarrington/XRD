@@ -1,0 +1,122 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 496
+y 90
+w 227
+h 179
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 2
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 25
+y 68
+w 60
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Calibration I/O"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 20
+y 140
+w 60
+h 18
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Dead Time Frequency"
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 143
+y 28
+w 49
+h 44
+lineColor index 14
+fill
+fillColor index 14
+lineWidth 0
+visPv "CALC\\\{(A)\}(det1.CalibIO)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 23
+y 28
+w 90
+h 35
+fgColor index 49
+bgColor index 5
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "det1.CalibIO"
+indicatorPv "det1.CalibIO"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 24
+y 100
+w 90
+h 35
+fgColor index 49
+bgColor index 5
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "det1.DTFREQ"
+indicatorPv "det1.DTFREQ"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+

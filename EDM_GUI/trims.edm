@@ -1,0 +1,120 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 66
+y 52
+w 414
+h 430
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 4
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (X-Y Graph)
+object xyGraphClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 24
+y 23
+w 365
+h 365
+# Appearance
+border
+graphTitle 
+xLabel 
+yLabel 
+fgColor index 14
+bgColor index 4
+gridColor index 14
+font "helvetica-medium-r-10.0"
+# Operating Modes
+plotMode "plotLastNPts"
+nPts 384
+#  X axis properties
+showXAxis
+xAxisSrc "AutoScale"
+xMin -9
+xMax 9
+xLablePrecision 1
+#  Y axis properties
+showYAxis
+yAxisSrc "AutoScale"
+yMin -9
+yMax 9
+#  Trace Properties
+numTraces 4
+yPv {
+  0 "det1.TR1"
+  1 "det1.TR2"
+  2 "det1.TR3"
+  3 "det1.TR4"
+}
+plotStyle {
+  0 "line"
+  1 "line"
+  2 "line"
+  3 "line"
+}
+plotUpdateMode {
+  0 "x"
+  1 "x"
+  2 "x"
+  3 "x"
+}
+plotSymbolType {
+  0 "circle"
+  1 "circle"
+  2 "circle"
+  3 "circle"
+}
+plotColor {
+  0 index 14
+  1 index 15
+  2 index 26
+  3 index 21
+}
+endObjectProperties
+
+# (Shell Command)
+object shellCmdClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 27
+y 396
+w 20
+h 20
+fgColor index 14
+bgColor index 5
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "!"
+numCmds 2
+commandLabel {
+  0 "Reset Defaults"
+  1 "Load From File"
+}
+command {
+  0 "bash XRD_RESET_ASIC_TRIMS.sh "
+  1 "bash XRD_LOAD_TRIMS.sh "
+}
+endObjectProperties
+
