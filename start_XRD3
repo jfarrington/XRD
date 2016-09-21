@@ -7,13 +7,15 @@
 #
 if [ ! -z $1 ]; then
    if [ $1 = "-e" ]; then
-      medm MEDM_GUI/sydordet.adl &
+	edm -x EDM_GUI/sydordet.edl &
+#     medm MEDM_GUI/sydordet.adl &
    else
       printf "Unknown option\n"
       exit 1
    fi   
 else
-   medm -x MEDM_GUI/sydordet.adl &
+	edm -x EDM_GUI/sydordet.edl &
+#   medm -x MEDM_GUI/sydordet.adl &
 fi
 
 caput det1.EBLK 0
@@ -49,6 +51,7 @@ sleep 1
 # Send the DAC calibrations
 #bash XRD_1_CAL-140708-1454.sh
 #bash XRD1-Pix_Config-140721-1007.sh
+sh Calibration/XRD_CONFIGURATION/XRD3_DAC_Config-160914-1720.sh
 
 # Send the ASIC Trim calibrations
 # bash XRD_LOAD_TRIMS.sh
