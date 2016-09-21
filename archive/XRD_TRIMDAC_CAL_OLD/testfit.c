@@ -237,54 +237,12 @@ ezArrayPut(char *ID, char *arr, int len)
 }
 
 
-// Hardcoded for array of 640 elements
-// if all elements are zero , return 1
-int AllAreZero(int *arr)
-{
-int i;
-   for(i=0; i<640; i++)
-   {
-      if (arr[i])
-         return 0;
-   }
-   return (1);
-}
-
-
-//
-// Wrap ezcaGet with a call that attempts multiple times until get valid data
-int ezcaGet_KeepTrying(char *str, int type, int NCH, int* y)
-{
-int nrep, res;
-
-      for(nrep=0; nrep<3; nrep++)
-      {
-         res=ezcaGet(str,type,NCH,y);
-         if (res!=0) 
-         {
-            printf("Get error %i",res);
-         }
-         else if (AllAreZero(y))
-         {
-            // twiddle thumbs
-         }
-         else
-         {
-            break;  // no error, and not all zero, exit loop
-         }
-         sleep(1);
-      }
-
-      return res;
-}
-
 void scan_levels(){
 int ud,i,j,res,leng,len2;
 int y[640]; /* max no. of channels */
 char str1[256];
 float x_i;
 FILE *fd;
-int nrep;
 
 #ifdef DEBUG
 	printf("entering scan_levels()\n");
@@ -340,10 +298,8 @@ int nrep;
 #ifdef DEBUG
       printf("getting data\n");
 #endif
-
-// YF 9/25/13 -- add mechanism to repeat if get bad data
-     
-      res=ezcaGet_KeepTrying("det1.S2",ezcaLong,NCH,y);
+      res=ezcaGet("det1.S2",ezcaLong,NCH,y);
+      if(res!=0) printf("Get error %i",res);
 
       for(j=0;j<NCH;j++)
       {
@@ -353,9 +309,8 @@ int nrep;
 #endif
       }
       printf("\n");
-      
-      res=ezcaGet_KeepTrying("det1.S3",ezcaLong,NCH,y);
-      
+      res=ezcaGet("det1.S3",ezcaLong,NCH,y);
+      if(res!=0) printf("Get error %i",res);
       for(j=0;j<NCH;j++)
       {
          data[2][j][i]=y[j];
@@ -413,14 +368,14 @@ int nrep;
 #ifdef DEBUG
       printf("getting data\n");
 #endif
-      res=ezcaGet_KeepTrying("det1.S2",ezcaLong,NCH,y);
-
+      res=ezcaGet("det1.S2",ezcaLong,NCH,y);
+      if(res!=0) printf("Get error %i",res);
       for(j=0;j<NCH;j++)
       {
          data[1][j][i]=y[j];
       }
-      res=ezcaGet_KeepTrying("det1.S3",ezcaLong,NCH,y);
-
+      res=ezcaGet("det1.S3",ezcaLong,NCH,y);
+      if(res!=0) printf("Get error %i",res);
       for(j=0;j<NCH;j++)
       {
          data[3][j][i]=y[j];
@@ -478,7 +433,7 @@ FILE *dfile;
 int i,j;
 
 	dfile=fopen("scan_fits.dat","w");
-	// printf("%s\n",strerror(errno));
+	printf("%s\n",strerror(errno));
 	if(dfile != NULL){
 	   for(j=0;j<NCH;j++){
 	     fprintf(dfile,"%i  ",j);
@@ -501,7 +456,7 @@ FILE *dfile;
 int i,j;
 
 	dfile=fopen("dacs.dat","w");
-	// printf("save-dacs: %s\n",strerror(errno));
+	printf("save-dacs: %s\n",strerror(errno));
 	if(dfile != NULL){
 	   for(j=0;j<NCH;j++){
 		fprintf(dfile,"%i  %i %i %i %i\n",j,v1_l[j],v1_h[j],v2_l[j],v2_h[j]);
@@ -520,7 +475,7 @@ FILE *dfile;
 int i,j,k;
 
 	dfile=fopen("dacs.dat","r");
-	//printf("%s\n",strerror(errno));
+	printf("%s\n",strerror(errno));
 	if(dfile != NULL){
 	   for(j=0;j<NCH;j++){
 		fscanf(dfile,"%i  %i %i %i %i\n",&k,&v1_l[j],&v1_h[j],&v2_l[j],&v2_h[j]);
@@ -730,7 +685,7 @@ FILE *fl;
 int i,j;
 
 	fl=fopen(Fname,"r");
-	// printf("fl=%i    %s\n",fl,strerror(errno));
+	printf("fl=%i    %s\n",fl,strerror(errno));
 	if(fl != NULL){
 	 for(i=0;i<4;i++){
 	   for(j=0;j<NCH;j++){

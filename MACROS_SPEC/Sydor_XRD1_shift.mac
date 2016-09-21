@@ -1,0 +1,121 @@
+long array si_dat[3][640]
+long array si_val[3]
+global si_dat
+global si_val
+
+# NOTE: SET THE DETECTOR TO 'AUTOCOUNT' AND PRESS 'CNT'(START) BEFORE RUNNING THE MACROS;
+# Flags to turn on and off use of Hermes detector. 
+# HERMES is a global flag. Nothing happens if it is zero.
+# ENABLEA, ENABLEB, ENABLEC turn on or off the saving of one of the three
+# counters on each channel. A is the threshold, B and C are the SCA counters.
+# THe simplest possible configuration has HERMES=1 and ENABLEA=1. THe default
+# has all =1.
+
+# Spec Counters THR, SCA1 and SCA2 are the integral of all the counts A B and C above.
+# For alignment purposes, counter CEN is defined as the sum of the central 8 channels. 
+# Thus, scanning some feature using that as the signal will allow it to be centered.
+
+global HERMES
+global ENABLEA
+global ENABLEB
+global ENABLEC
+
+HERMES=1
+ENABLEA=1
+ENABLEB=0
+ENABLEC=0
+DETNAME="det1"
+
+def hermes_getcounts '
+# Read all three chips counters into si_dat array.
+# Put integrated counts into Spec counter variables.
+# Put central 8 channels of si_dat[0] into Spec variable.
+#   printf("Getcounts\n")
+   if(HERMES==1){
+	global si_dat
+	global si_val
+	si_dat[0][:]=epics_get("det1.S1")
+	si_dat[1][:]=epics_get("det1.S2")
+	si_dat[2][:]=epics_get("det1.S3")
+	si_val=epics_get("det1.VAL")
+	S[THR]=si_val[0]
+	S[SCA1]=si_val[1]
+	S[SCA2]=si_val[2]
+#Shifted pixels down to avoid nonfunctional sensor region"
+        S[CTR]=si_dat[0][296]+si_dat[0][297]+si_dat[0][298]+si_dat[0][299]+si_dat[0][300]+si_dat[0][301]+si_dat[0][302]+si_dat[0][303]+si_dat[0][304]
+	}
+'
+
+def hermes_precount '
+# start detector acquisition
+#  printf("Precount\n")
+  if(HERMES==1){
+        epics_put("det1:ai0.SCAN", 0)
+        epics_put("det1:ai1.SCAN", 0)
+        epics_put("det1:ai2.SCAN", 0)
+        epics_put("det1:ai3.SCAN", 0)
+        epics_put("det1:ai4.SCAN", 0)
+        epics_put("det1:ai5.SCAN", 0)
+        epics_put("det1:ai6.SCAN", 0)
+        epics_put("det1:ai7.SCAN", 0)
+	epics_put("det1.TP",COUNT_TIME)
+	}
+'
+
+def hermes_postcount '
+# wait for acquisition to complete.
+#   print "Done. ",
+#   printf("Postcount\n")
+   if(HERMES==1){
+	while(epics_get("det1.CNT")=="Count"){}
+	}
+        epics_put("det1:ai0.SCAN", 5)
+        epics_put("det1:ai1.SCAN", 5)
+        epics_put("det1:ai2.SCAN", 5)
+        epics_put("det1:ai3.SCAN", 5)
+        epics_put("det1:ai4.SCAN", 5)
+        epics_put("det1:ai5.SCAN", 5)
+        epics_put("det1:ai6.SCAN", 5)
+        epics_put("det1:ai7.SCAN", 5)
+'
+	
+def hermes_scan_loop '
+#  printf("Scan\n")
+  if(HERMES==1){
+	local i
+	on(DATAFILE);offt
+	if(ENABLEA==1){
+	  printf("\n@A ")
+	  for(i=0;i<=639;i++){
+		  printf("%i ",si_dat[0][i])
+		  }
+		}
+	if(ENABLEB==1){	
+	  printf("\n@B ")
+	  for(i=0;i<=639;i++){
+		printf("%i ",si_dat[1][i])
+		}
+	}
+	if(ENABLEC==1){
+	  printf("\n@C ")
+	  for(i=0;i<=639;i++){
+		printf("%i ",si_dat[2][i])
+		}
+	 }
+	  printf("\n")
+	  ont; off(DATAFILE)
+	}
+'
+
+def cleanup '
+#    printf("Cleanup\n")
+    epics_put("det1.CONT",0)
+    epics_put("det1.CONT",1)
+'
+
+cdef("user_precount","hermes_precount;","hermes_precount")
+cdef("user_getcounts","hermes_getcounts;","hermes_getcounts")
+cdef("user_postcount","hermes_postcount;","hermes_postcount")
+cdef("user_scan_loop","hermes_scan_loop;","hermes_scan_loop")
+cdef("cleanup","cleanup;","cleanup")
+do user_premove_lin.mac

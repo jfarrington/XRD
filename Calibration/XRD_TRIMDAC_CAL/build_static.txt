@@ -1,0 +1,2 @@
+gcc -c main.c 
+gcc -o trim -static main.o libfit.so /usr/local/grace/lib/libgrace_np.a

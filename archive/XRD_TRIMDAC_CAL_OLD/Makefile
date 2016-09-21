@@ -18,17 +18,10 @@ LIBDIRS = -L$(CALIBDIR) -L$(EZCALIBDIR)
 LIBS = $(EZCALIB) $(CALIBS) -lminpack
 CFLAGS = -c -fPIC
 
-#YF Try making static
-#Uncomment only one line below
-CCOPTION = -shared
-#CCOPTION = -static
-
 libfit.so: testfit.o
-	$(CC) $(CCOPTION) -o libfit.so testfit.o $(LIBDIRS) $(LIBS)
+	$(CC) -shared -o libfit.so testfit.o $(LIBDIRS) $(LIBS)
 clean:
-#JF Remove trim execulable as well
-	rm -f *.o libfit.so trim
-
+	rm -f *.o libfit.so
 .c.o: $*.c
 	$(CC) $(CFLAGS) $(INCLUDEDIRS) $*.c
 

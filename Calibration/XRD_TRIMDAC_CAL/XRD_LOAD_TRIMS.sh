@@ -1,5 +1,7 @@
 #!bash.sh
 #XRD_LOAD_DACTRIMS.sh: Reads dac.dat array, loads into XRD and saves configuration file.
+#Changes:
+#7/31/14 JF-PAth to dacs.dat file automatically obtained 
 
 cat dacs.dat|awk '{print $1" "}'>A
 cat dacs.dat|awk '{print $2" "$3" "$4" "$5}'>B
@@ -7,9 +9,9 @@ paste -d" " A B > C
 
 function check_det()
 {
-	tmp=$(caget det1)
-	err=$?
-	# err = 0 when det comm is okay, 1 otherwise
+    tmp=$(caget det1)
+    err=$?
+    # err = 0 when det comm is okay, 1 otherwise
     echo $err
 }
 
@@ -20,10 +22,10 @@ if [ $(check_det) != 0 ]; then
    exit 1
 fi
 
+PATH=`pwd`
+FILE="$PATH/C"
 
-#
-FILE="/opt/epics_dev/IOC/STRIP_DET/SYDOR_XRD_uC5282/SydorXRD_Start/Calibration/XRD_TRIMDAC_CAL/C"
-#printf "Opening $FILE:\n"
+printf "Opening $FILE:\n"
 
 printf "Enter XRD number: "
 read DETECTOR
@@ -38,7 +40,7 @@ declare -a TR4
 
 while read -a p; do 
 
-   #echo length of p is ${#p[@]}
+   echo length of p is ${#p[@]}
    TR1[$aline]=${p[1]}
    TR2[$aline]=${p[2]}
    TR3[$aline]=${p[3]}

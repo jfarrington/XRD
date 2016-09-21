@@ -1,12 +1,12 @@
 
 file {
-	name="/opt/epics_dev/Det_medm/sydordet.adl"
+	name="/opt/epics_dev/SydorXRD_Start_0/MEDM_GUI/sydordet.adl"
 	version=030107
 }
 display {
 	object {
-		x=334
-		y=93
+		x=90
+		y=76
 		width=855
 		height=620
 	}
@@ -181,64 +181,6 @@ text {
 		clr=54
 	}
 	textix="Leak. Out"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=459
-		y=546
-		width=80
-		height=24
-	}
-	control {
-		chan="det1.TP"
-		clr=14
-		bclr=2
-	}
-	limits {
-		precSrc="default"
-	}
-}
-text {
-	object {
-		x=369
-		y=548
-		width=80
-		height=24
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Count Time"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=459
-		y=574
-		width=80
-		height=24
-	}
-	control {
-		chan="det1.TP1"
-		clr=14
-		bclr=2
-	}
-	limits {
-		precSrc="default"
-	}
-}
-text {
-	object {
-		x=369
-		y=576
-		width=80
-		height=24
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Auto Time"
 	align="horiz. right"
 }
 "choice button" {
@@ -848,4 +790,139 @@ text {
 	clr=14
 	bclr=5
 	visual="a column of buttons"
+}
+"text update" {
+	object {
+		x=738
+		y=122
+		width=80
+		height=18
+	}
+	monitor {
+		chan="det1.VERS"
+		clr=14
+		bclr=2
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=648
+		y=119
+		width=80
+		height=24
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Version"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=469
+		y=546
+		width=35
+		height=24
+	}
+	control {
+		chan="det1.TP"
+		clr=14
+		bclr=2
+	}
+	limits {
+		precSrc="default"
+		precDefault=1
+	}
+}
+"text entry" {
+	object {
+		x=469
+		y=574
+		width=35
+		height=24
+	}
+	control {
+		chan="det1.TP1"
+		clr=14
+		bclr=2
+	}
+	limits {
+		precSrc="default"
+		precDefault=2
+	}
+}
+"text update" {
+	object {
+		x=507
+		y=550
+		width=30
+		height=24
+	}
+	monitor {
+		chan="det1.TP"
+		clr=14
+		bclr=2
+	}
+	limits {
+		precSrc="default"
+		precDefault=1
+	}
+}
+"text update" {
+	object {
+		x=507
+		y=578
+		width=40
+		height=24
+	}
+	monitor {
+		chan="det1.TP1"
+		clr=14
+		bclr=2
+	}
+	limits {
+		precSrc="default"
+		precDefault=2
+	}
+}
+composite {
+	object {
+		x=385
+		y=548
+		width=80
+		height=52
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=385
+				y=548
+				width=80
+				height=24
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Count Time (s)"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=385
+				y=576
+				width=80
+				height=24
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Auto Time (s)"
+			align="horiz. right"
+		}
+	}
 }

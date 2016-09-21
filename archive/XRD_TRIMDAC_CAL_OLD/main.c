@@ -97,7 +97,7 @@ while(Not_done){
 	     printf("enable:  Enable all channels\n");
 	     printf("guess:   set estimated center of fitted data (volts)\n");
 	     printf("step:    set threshold level increment for scanning (volts)\n");
-	     printf("nsteps:  number of steps in scan\n");
+	     printf("Nsteps:  number of steps in scan\n");
 	     printf("time:    set time to count at each point\n");
 	     printf("dislo:   value used to disable lower discriminator\n");
 	     printf("dishi:   value used to disable upper discriminator\n");
